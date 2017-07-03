@@ -5,7 +5,7 @@ var app = angular.module('app', [])
 	$scope.title = "";
 	$scope.todo = "";
 	
-	$scope.addTodo = function() {
+	$scope.addPost = function() {
 		$http({
 			method: 'POST',
 			url: '/addPost',
