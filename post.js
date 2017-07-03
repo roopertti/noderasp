@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
 	title: String,
-	todos: [{ task: String}],
+	todos: String,
 	created: Date
 });
 
