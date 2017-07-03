@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const moment = require('moment');
 const mongoose = require('mongoose');
-mognoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://rasp:raspi@ds147052.mlab.com:47052/rasp-todos');
 
