@@ -11,7 +11,7 @@ var app = angular.module('app', [])
 			url: '/addPost',
 			data: {
 				title: $scope.title,
-				todos: $scope.todos
+				todo: $scope.todo
 			}
 		})
 		.then(function(response) {
@@ -34,6 +34,7 @@ var app = angular.module('app', [])
 		})
 		.then(function(response) {
 			$scope.posts = response.data;
+			console.log(response.data);
 		}, function(err) {
 			console.log(err)
 		});

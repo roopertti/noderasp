@@ -25,11 +25,11 @@ app.post('/addPost', (req, res) => {
 	console.log('post request');
 	
 	const title = req.body.title;
-	const todos = req.body.todos;
+	const todo = req.body.todo;
 	
 	const post = new Post({
 		title: title,
-		todos: todos,
+		todo: todo,
 		created: moment()
 	});
 	
@@ -49,13 +49,11 @@ app.get('/getPosts', (req, res) => {
 	console.log('get request');
 	Post.find({})
 	.then((result) => {
-		console.log(result);
+		res.send(result);
 	})
 	.catch((err) => {
 		console.log(`error: ${err}`);
 	});
-	
-	res.send('request handed');
 });
 
 app.listen(port, () => {
