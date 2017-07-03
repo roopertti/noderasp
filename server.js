@@ -42,6 +42,7 @@ app.post('/addPost', (req, res) => {
 		console.log(`error: ${err}`);
 	});
 	
+	res.send('request handed');
 });
 
 app.get('/getPosts', (req, res) => {
@@ -53,6 +54,8 @@ app.get('/getPosts', (req, res) => {
 	.catch((err) => {
 		console.log(`error: ${err}`);
 	});
+	
+	res.send('request handed');
 });
 
 app.listen(port, () => {
