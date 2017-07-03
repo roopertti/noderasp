@@ -14,6 +14,14 @@ app.get('/', (req,res) => {
 	res.sendFile('index.html');
 });
 
+app.post('/addPost', (req, res) => {
+	console.log('post request');
+});
+
+app.get('/getPosts', (req, res) => {
+	console.log('get request');
+});
+
 app.listen(port, () => {
 	console.log(`listening to ${port}`);
 });
