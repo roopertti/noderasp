@@ -1,0 +1,25 @@
+{
+  "name": "noderasp",
+  "version": "1.0.0",
+  "description": "Simple Todo-ish project to test out Raspberry PI's Node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roopertti/noderasp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roopertti/noderasp/issues"
+  },
+  "homepage": "https://github.com/roopertti/noderasp#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.1"
+  }
+}
