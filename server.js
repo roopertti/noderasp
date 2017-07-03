@@ -7,7 +7,7 @@ const moment = require('moment');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://rasp:raspi@ds147052.mlab.com:47052/rasp-todos');
+mongoose.connect('mongodb://localhost/rasp-todos');
 
 const Post = require('./post.js');
 
