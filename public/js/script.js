@@ -4,6 +4,8 @@ var app = angular.module('app', [])
 	
 	$scope.title = "";
 	$scope.todo = "";
+	$scope.todosDone = 0;
+	$scope.todosLeft = 0;
 	
 	$scope.addPost = function() {
 		$http({
@@ -16,6 +18,8 @@ var app = angular.module('app', [])
 		})
 		.then(function(response) {
 			$scope.refreshTodos();
+			$scope.title = "";
+			$scope.todo = "";
 		}, function(err) {
 			console.log(err);
 		});
@@ -49,12 +53,20 @@ var app = angular.module('app', [])
 			}
 		})
 		.then(function(response) {
-			console.log('update success');
+			console.log(response);
 		}, function(err) {
 			console.log(err);
 		});
 		
 		$scope.refreshTodos();
 	}
+	
+	$scope.$watch('posts', function() {
+		$scope.todosLeft = $scope.posts.length;
+	});
+	
+	$scope.$watch('postsDone', function() {
+		$scope.todosDone = $scope.postsDone.length;
+	});
 	
 }]);

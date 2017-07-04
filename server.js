@@ -21,9 +21,7 @@ app.get('/', (req,res) => {
 	res.sendFile('index.html');
 });
 
-app.post('/addPost', (req, res) => {
-	console.log(req.body);
-	
+app.post('/addPost', (req, res) => {	
 	const title = req.body.title;
 	const todo = req.body.todo;
 	const created = moment();
@@ -45,11 +43,11 @@ app.post('/addPost', (req, res) => {
 		console.log(`error: ${err}`);
 	});
 	
-	res.send('request handed');
+	res.send('post request success');
 });
 
 app.get('/getPosts', (req, res) => {
-	console.log('get request');
+	console.log('all posts requested');
 	Post.find({})
 	.then((result) => {
 		const posts = {
@@ -67,6 +65,7 @@ app.get('/getPosts', (req, res) => {
 });
 
 app.put('/markAsDone', (req, res) => {
+	console.log('update requested');
 	var id = req.body.postId;
 	
 	Post.findById(id)

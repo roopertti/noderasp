@@ -7,11 +7,34 @@
 	font-size: 13px;
 }
 
+.right {
+	float: right;
+}
+
 .post-body {
 	margin-top: 10px;
 	font-size: 16px;
 }
 
-.pre-scrollable {
-	max-height: 600px !important;
+.divider {
+	border-bottom: 1px solid #999999;
+	width: 100%;
+	margin: 5px 0 5px 0;
+	display: block;
+}
+
+.bigmax {
+	max-height: 450px !important;
+}
+
+.smallmax {
+	max-height: 200px !important;
+}
+
+.smaller {
+	font-size: 15px !important;
+}
+
+body {
+	margin-top: 10px;
 }
