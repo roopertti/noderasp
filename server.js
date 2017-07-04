@@ -81,6 +81,16 @@ app.put('/markAsDone', (req, res) => {
 	});
 });
 
+app.delete('/deleteAllTodos', (req, res) => {
+	Post.remove({})
+	.then(() => {
+		res.send('remove succeeded')
+	})
+	.catch((err) => {
+		res.send(err);
+	});
+});
+
 app.listen(port, () => {
 	console.log(`listening to ${port}`);
 });

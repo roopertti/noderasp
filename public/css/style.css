@@ -24,7 +24,7 @@
 }
 
 .bigmax {
-	max-height: 450px !important;
+	max-height: 350px !important;
 }
 
 .smallmax {
@@ -37,4 +37,12 @@
 
 body {
 	margin-top: 10px;
+}
+
+.margin-pls {
+	margin-top: 20px;
+}
+
+.page-body {
+	height: 450px !important;
 }

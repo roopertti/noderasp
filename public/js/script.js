@@ -61,6 +61,20 @@ var app = angular.module('app', [])
 		$scope.refreshTodos();
 	}
 	
+	$scope.clearTodos = function() {
+		$http({
+			method: 'DELETE',
+			url: '/deleteAllTodos'
+		})
+		.then(function(response) {
+			console.log(response);
+		}, function(err) {
+			console.log(err);
+		});
+		
+		$scope.refreshTodos();
+	}
+	
 	$scope.$watch('posts', function() {
 		$scope.todosLeft = $scope.posts.length;
 	});
