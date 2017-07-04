@@ -3,8 +3,10 @@ var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
 	title: String,
-	todos: String,
-	created: Date
+	todo: String,
+	created: Date,
+	createdStr: String,
+	done: Boolean
 });
 
 var Post = mongoose.model('Post', postSchema, 'posts');

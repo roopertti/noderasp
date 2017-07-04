@@ -22,15 +22,18 @@ app.get('/', (req,res) => {
 });
 
 app.post('/addPost', (req, res) => {
-	console.log('post request');
+	console.log(req.body);
 	
 	const title = req.body.title;
 	const todo = req.body.todo;
+	const created = moment();
 	
 	const post = new Post({
 		title: title,
 		todo: todo,
-		created: moment()
+		created: created,
+		createdStr: created.format("DD.MM.YYYY HH:mm"),
+		done: false
 	});
 	
 	post.save()
@@ -49,10 +52,33 @@ app.get('/getPosts', (req, res) => {
 	console.log('get request');
 	Post.find({})
 	.then((result) => {
-		res.send(result);
+		const posts = {
+			undone: [],
+			done: []
+		};
+		result.forEach((post) => {
+			post.done ? posts.done.push(post) : posts.undone.push(post);
+		});
+		res.send(posts);
 	})
 	.catch((err) => {
 		console.log(`error: ${err}`);
+	});
+});
+
+app.put('/markAsDone', (req, res) => {
+	var id = req.body.postId;
+	
+	Post.findById(id)
+	.then((post) => {
+		post.done = true;
+		post.save()
+	})
+	.then(() => {
+		res.send('update successful');
+	})
+	.catch((err) => {
+		console.log(`error ${err}`);
 	});
 });
 

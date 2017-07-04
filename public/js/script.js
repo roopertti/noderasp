@@ -1,6 +1,6 @@
 var app = angular.module('app', [])
 
-.controller('SubmitCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('TodoCtrl', ['$scope', '$http', function($scope, $http) {
 	
 	$scope.title = "";
 	$scope.todo = "";
@@ -15,17 +15,15 @@ var app = angular.module('app', [])
 			}
 		})
 		.then(function(response) {
-			console.log('success');
+			$scope.refreshTodos();
 		}, function(err) {
-			console.log('error');
+			console.log(err);
 		});
 	}
 	
-}])
-
-.controller('GetCtrl', ['$scope', '$http', function($scope, $http) {
-	
 	$scope.posts = [];
+	
+	$scope.postsDone = [];
 	
 	$scope.refreshTodos = function() {
 		$http({
@@ -33,11 +31,30 @@ var app = angular.module('app', [])
 			url: '/getPosts'
 		})
 		.then(function(response) {
-			$scope.posts = response.data;
-			console.log(response.data);
+			$scope.posts = response.data.undone;
+			$scope.postsDone = response.data.done;
 		}, function(err) {
 			console.log(err)
 		});
+	}
+	
+	$scope.refreshTodos();
+	
+	$scope.markAsDone = function(post) {
+		$http({
+			method: 'PUT',
+			url: '/markAsDone',
+			data: {
+				postId: post._id
+			}
+		})
+		.then(function(response) {
+			console.log('update success');
+		}, function(err) {
+			console.log(err);
+		});
+		
+		$scope.refreshTodos();
 	}
 	
 }]);

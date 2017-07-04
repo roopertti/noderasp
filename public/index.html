@@ -4,16 +4,18 @@
 	<meta charset="UTF-8">
 	<title>Raspberry Todo-app</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 	<script src="js/dependencies/angular.min.js"></script>
 	<script src="js/dependencies/moment-with-locales.min.js"></script>
+	<script> moment.locale = "fi"; </script>
 	<script src="js/script.js"></script>
 </head>
 <body>
 	<h1>moi</h1>
-	<div class="container">
+	<div class="container" ng-controller="TodoCtrl">
 		<div class="row">
-			<div class="col-md-4">
-				<form ng-controller="SubmitCtrl">
+			<div class="col-md-3">
+				<form>
 					<h2>Make a todo</h2>
 					<div class="form-group">
 						<label for="title">Title</label>
@@ -26,13 +28,12 @@
 					<button class="btn btn-success" ng-click="addPost()">Submit todo</button>
 				</form>
 			</div>
-			<div ng-controller="GetCtrl">
-				<div class="col-md-4">
-					<div ng-repeat="post in posts">
-						<h3>{{post.title}}</h3>
-						<p>{{post.todo}}</p>
+			<div class="col-md-5 pre-scrollable">
+				<div ng-repeat="post in posts">
+					<div class="well">
+						<h4 class="post-title">{{post.title}}</h4><span class="post-time">{{post.createdStr}}</span>
+						<p class="post-body">{{post.todo}}</p><button class="btn btn-warning btn-sm" ng-click="markAsDone(post)">Mark as done</button>
 					</div>
-					<button class="btn btn-info" ng-click="refreshTodos()">Refresh</button>
 				</div>
 			</div>
 		</div>
